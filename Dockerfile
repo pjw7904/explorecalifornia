@@ -2,8 +2,6 @@
 # A basic apache server. To use either add or bind mount content under /var/www
 FROM ubuntu:latest
 
-MAINTAINER Kimbro Staken version: 0.1
-
 RUN apt-get update && apt-get install -y apache2 git && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV APACHE_RUN_USER www-data
