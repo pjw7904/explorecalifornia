@@ -17,4 +17,5 @@ run cd explorecalifornia
 run rm -f Dockerfile
 run rm -f README.md
  
-CMD ["/etc/init.d/apache2 start", "-D", "FOREGROUND"]
+
+CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
