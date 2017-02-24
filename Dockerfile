@@ -4,7 +4,7 @@ FROM ubuntu:latest
 
 MAINTAINER Kimbro Staken version: 0.1
 
-RUN apt-get update && apt-get install -y apache2 unzip git && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y apache2 git && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
@@ -16,8 +16,6 @@ EXPOSE 80
 run cd /var/www/html
 run git clone https://github.com/AndrewGarbutt/explorecalifornia.git
 run cd explorecalifornia
-run unzip explore_california.zip
-run rm -f explore_california.zip
 run rm -f Dockerfile
 run rm -f README.md
 run mv explore_california/* .
