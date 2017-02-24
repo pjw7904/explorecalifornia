@@ -18,4 +18,4 @@ run rm -f Dockerfile
 run rm -f README.md
  
 
-CMD ["/usr/sbin/service apache2 start", "-D", "FOREGROUND"]
+CMD ["apachectl", "-D", "FOREGROUND"]
