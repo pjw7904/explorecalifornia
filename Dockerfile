@@ -19,4 +19,5 @@ run cd explorecalifornia
 run rm -f Dockerfile
 run rm -f README.md
 
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+run sudo service apache2
+CMD ["-D", "FOREGROUND"]
