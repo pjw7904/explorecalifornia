@@ -18,8 +18,5 @@ run git clone https://github.com/AndrewGarbutt/explorecalifornia.git
 run cd explorecalifornia
 run rm -f Dockerfile
 run rm -f README.md
-run mv explore_california/* .
-run rm -rfd explore_california
-run apt-get remove git unzip -y
 
 CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
