@@ -16,5 +16,5 @@ run git clone https://github.com/AndrewGarbutt/explorecalifornia.git
 run cd explorecalifornia
 run rm -f Dockerfile
 run rm -f README.md
-
-run service apache2 start
+ 
+CMD ["service apache2 start", "-D", "FOREGROUND"]
