@@ -15,7 +15,7 @@ EXPOSE 80
 #Get website
 run cd /var/www
 run git clone https://github.com/AndrewGarbutt/explorecalifornia.git
-run cd explore_california
+run cd explorecalifornia
 run unzip explore_california.zip
 run rm -f explore_california.zip
 run cd explore_california
