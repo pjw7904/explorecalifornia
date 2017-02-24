@@ -1,6 +1,6 @@
 #Example from https://github.com/kstaken/dockerfile-examples/blob/master/apache/Dockerfile
 # A basic apache server. To use either add or bind mount content under /var/www
-FROM ubuntu:lastest
+FROM ubuntu:latest
 
 MAINTAINER Kimbro Staken version: 0.1
 
