@@ -19,5 +19,5 @@ run cd explorecalifornia
 run rm -f Dockerfile
 run rm -f README.md
 
-run sudo service apache2 start
+run service apache2 start
 CMD ["-D", "FOREGROUND"]
