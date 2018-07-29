@@ -12,47 +12,7 @@
   <body>
     <div id="wrapper">
 
-      <div id="mainHeader">
-        <a href="index.html" title="home" class="logo">
-          <div id="logo">
-            <h1>Explore California</h1>
-          </div>
-        </a>
-        <div id="siteNav">
-          <h1>Where do you want to go?</h1>
-          <ul>
-            <li><a href="../tours.html" title="Our tours">Tours <br /><span class="tagline">follow our bliss</span></a>
-              <ul>
-                <li><a href="../tours.html" title="Our tours">All Tours</a></li>
-                <li><a href="../tours.html" title="find tours">Tours by Activity</a></li>
-                <li><a href="../tours.html" title="find tours">Tours by Region</a></li>
-                <li><a href="../tours.html" title="find tours">Tour Finder</a></li>
-              </ul>
-            </li>
-            <li><a href="../mission.html" title="What we believe">Mission <br /><span class="tagline">what makes us different?</span></a></li>
-            <li><a href="../resources.html" title="planning resources" class="current">Resources <br /><span class="tagline">plan your trip</span></a>
-              <ul>
-                <li><a href="../resources/faq.html" title="Got questions?">Tour FAQs</a></li>
-                <li><a href="../resources/additional_resources.html" title="additional resources">Tour Information</a></li>
-                <li><a href="../resources/terms.html" title="terms and conditions">Site Terms</a></li>
-              </ul>
-            </li>
-            <li><a href="../explorers.html" title="Our community">Explorers <br /><span class="tagline">join our community</span></a>
-              <ul>
-                <li><a href="../explorers/join.html" title="join our community">Join the Explorers</a></li>
-                <li><a href="../blog/index.html" title="read our blog!">Read our Blog</a></li>
-                <li><a href="../explorers/gallery.html" title="contributor photos">Tour Photos</a></li>
-                <li><a href="../explorers/video.html" title="check out our podcast">Video podcast</a></li>
-              </ul>
-            </li>
-            <li><a href="../contact.html" title="contact us">Contact <br /><span class="tagline">we're listening</span></a>
-              <ul>
-                <li><a href="../support.html" title="need help?">Support</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
+      <?php include('nav.php'); ?>
   
       <div id="mainContent">
         <div id="contentHeader">
