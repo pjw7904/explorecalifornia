@@ -1,0 +1,103 @@
+---
+#Author: Peter Willis
+#Description: Used to get a multi-tier arch up and running (For use with NSSA 320)
+
+# ********** WEB SERVER CONFIGURATION **********
+- hosts: web.pjw7904
+
+  tasks:
+  - name: Installing Apache Web Server
+    yum: name=httpd state=present
+
+  - name: Grab PHP 7 Files
+    yum: name={{item}} state=present
+    with_items:
+     - https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+     - https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+
+  - name: Installing PHP 7
+    yum: name=php70w state=present
+
+  - name: Installing PHP MySQL Hook
+    yum: name=php70w-mysql state=present
+
+  - copy:
+      src: /website_content/globe_bank
+      dest: /var/www/html
+      owner: root
+      group: root
+      mode: 0777
+
+  - name: Starting the Web Server
+    service: name=httpd state=started
+    become: true
+
+  - name: Configuring Apache to start on boot
+    service: name=httpd enabled=yes
+    become: true
+
+# ********** DATABASE SERVER CONFIGURATION **********
+- hosts: database.pjw7904
+
+  tasks:
+  - name: Installing Maria DB Server and necessary Ansible dependency for MySQL
+    yum: name={{item}} state=present
+    with_items:
+     - mariadb-server
+     - mariadb
+     - MySQL-python
+
+  - name: Starting the Database Server
+    service: name=mariadb state=started
+    become: true
+
+  - name: Configuring MariaDB to start on boot
+    service: name=mariadb enabled=yes
+    become: true
+
+  - copy:
+      src: /website_content/globe_bank.sql
+      dest: /
+      owner: root
+      group: root
+      mode: 0777
+
+  - name: Creating website database
+    mysql_db:
+      name: globe_bank
+      state: present
+
+  - mysql_user:
+      name: dbuser
+      host: '%'
+      password: nssa713
+      priv: 'globe_bank.*:ALL'
+      state: present
+
+  - name: Import base data into Database
+    mysql_db:
+      state: import
+      name: globe_bank
+      target: /globe_bank.sql
+
+# ********** LOAD BALANCER CONFIGURATION **********
+- hosts: loadbalancer.pjw7904
+
+  tasks:
+  - name: Installing load balancer
+    yum: name=haproxy state=present
+
+  - copy:
+      src: /haproxy.cfg
+      dest: /etc/haproxy/haproxy.cfg
+      owner: root
+      group: root
+      mode: 0777
+
+  - name: Starting the Load Balancer
+    service: name=haproxy state=started
+    become: true
+
+  - name: Configuring the Load Balancer to start on boot
+    service: name=haproxy enabled=yes
+    become: true

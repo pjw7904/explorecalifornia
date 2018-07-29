@@ -1,0 +1,20 @@
+---
+#Author: Peter Willis
+#Description: Allows HTTP/HTTPS traffic to web server (For use with NSSA 320)
+
+- hosts: web.pjw7904
+
+  tasks:
+  - firewalld:
+     service: http
+     permanent: true
+     state: enabled
+
+  - firewalld:
+     service: https
+     permanent: true
+     state: enabled
+
+  - name: Restart the firewall
+    service: name=firewalld state=restarted
+    become: true
