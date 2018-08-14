@@ -22,7 +22,7 @@
     yum: name=php70w-mysql state=present
 
   - copy:
-      src: /website_content/globe_bank
+      src: ~/explorecalifornia/explore_california
       dest: /var/www/html
       owner: root
       group: root
@@ -56,7 +56,7 @@
     become: true
 
   - copy:
-      src: /website_content/globe_bank.sql
+      src: ~/explorecalifornia/Scripts and Playbooks/Scripts/Init_DB_Content.sql
       dest: /
       owner: root
       group: root
