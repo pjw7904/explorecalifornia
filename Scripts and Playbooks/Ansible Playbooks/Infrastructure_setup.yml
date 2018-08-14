@@ -70,7 +70,7 @@
   - mysql_user:
       name: dbuser
       host: '%'
-      password: nssa713
+      password: password
       priv: 'globe_bank.*:ALL'
       state: present
 
